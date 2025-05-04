@@ -7,7 +7,7 @@ const legendVendidos = document.getElementById('legend-vendidos');
 const verMaisBtn = document.getElementById('verMaisBtn');
 
 const totalNumeros = 600;
-const numerosPorCarregamento = 200; // Quantos números mostrar por vez
+const numerosPorCarregamento = 280; // Quantos números mostrar por vez
 let numerosCarregados = 0;
 
 // Função para verificar se há números repetidos em um array
