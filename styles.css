@@ -90,6 +90,7 @@ button {
 }
 
 #total-a-pagar {
+    font-family: 'Segoe Script', cursive; /* Uma fonte cursiva e elegante */
     width: 350px;
     padding: 10px 20px;
     background-color: #00a738; /* Rosa mais suave para o botão */
