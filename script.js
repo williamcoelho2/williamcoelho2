@@ -56,6 +56,9 @@ function marcarNumerosVendidos(listaVendidos) {
 
 function carregarMaisNumeros() {
     const proximoLimite = numerosCarregados + numerosPorCarregamento;
+    const totalPagarElement = document.getElementById('total-a-pagar');
+    const precoPorNumero = 1.98; // Valor por número
+
     for (let i = numerosCarregados + 1; i <= Math.min(proximoLimite, totalNumeros); i++) {
         const numberItem = document.createElement('div');
         numberItem.classList.add('number-item');
@@ -72,6 +75,13 @@ function carregarMaisNumeros() {
         numberItem.appendChild(checkbox);
         numberItem.appendChild(label);
         numbersContainer.appendChild(numberItem);
+
+        // Adiciona o event listener para atualizar o total ao mudar o estado do checkbox
+        checkbox.addEventListener('change', function() {
+            const selectedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked:not(:disabled)');
+            const totalSelecionado = (selectedCheckboxes.length * precoPorNumero).toFixed(2).replace('.', ',');
+            totalPagarElement.textContent = `Valor pelos seus numéros da sorte: R$ ${totalSelecionado}`;
+        });
     }
     numerosCarregados = proximoLimite;
 
@@ -82,6 +92,11 @@ function carregarMaisNumeros() {
 
     // Marca os números vendidos APÓS carregar a primeira parte
     marcarNumerosVendidos(numerosVendidos);
+
+    // Inicializa o valor total na tela
+    const initialSelectedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked:not(:disabled)');
+    const initialTotal = (initialSelectedCheckboxes.length * precoPorNumero).toFixed(2).replace('.', ',');
+    totalPagarElement.textContent = `Valor pelos seus numéros da sorte: R$ ${initialTotal}`;
 }
 
 // Carregar os primeiros números
@@ -94,15 +109,18 @@ function enviarParaWhatsApp() {
     const precoPorNumero = 1.98; // Valor por número (pode ser alterado)
     const selectedNumbers = [];
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked:not(:disabled)');
+    const totalPagarElement = document.getElementById('total-a-pagar');
 
     checkboxes.forEach(checkbox => {
         selectedNumbers.push(checkbox.value);
     });
 
+    const totalAPagar = (selectedNumbers.length * precoPorNumero).toFixed(2).replace('.', ',');
+    totalPagarElement.textContent = `Valor pelos seus numéros da sorte: R$ ${totalAPagar}`; // Atualiza o elemento HTML
+
     if (selectedNumbers.length > 0) {
         const numbersText = selectedNumbers.join(', ');
-        const totalAPagar = (selectedNumbers.length * precoPorNumero).toFixed(2).replace('.', ',');
-        const mensagem = `${initialText}${numbersText}\nTotal a pagar: R$ ${totalAPagar}`;
+        const mensagem = `${initialText}${numbersText}\nValor pelos seus numéros da sorte: R$ ${totalAPagar}`;
         const fullText = encodeURIComponent(mensagem);
         const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${fullText}`;
 
