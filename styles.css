@@ -90,7 +90,7 @@ button {
 }
 
 #total-a-pagar {
-    font-family: 'Segoe Script', cursive; /* Uma fonte cursiva e elegante */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     width: 350px;
     padding: 10px 20px;
     background-color: #00a738; /* Rosa mais suave para o botão */
