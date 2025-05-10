@@ -6,8 +6,8 @@ const messageContainer = document.getElementById('message-container');
 const legendVendidos = document.getElementById('legend-vendidos');
 const verMaisBtn = document.getElementById('verMaisBtn');
 
-const totalNumeros = 800;
-const numerosPorCarregamento = 280; // Quantos números mostrar por vez
+const totalNumeros = 1000;
+const numerosPorCarregamento = 500; // Quantos números mostrar por vez
 let numerosCarregados = 0;
 
 // Função para verificar se há números repetidos em um array
@@ -57,7 +57,7 @@ function marcarNumerosVendidos(listaVendidos) {
 function carregarMaisNumeros() {
     const proximoLimite = numerosCarregados + numerosPorCarregamento;
     const totalPagarElement = document.getElementById('total-a-pagar');
-    const precoPorNumero = 0.98; // Valor por número
+    const precoPorNumero = 0.49; // Valor por número
 
     for (let i = numerosCarregados + 1; i <= Math.min(proximoLimite, totalNumeros); i++) {
         const numberItem = document.createElement('div');
