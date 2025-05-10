@@ -106,7 +106,7 @@ carregarMaisNumeros();
 verMaisBtn.addEventListener('click', carregarMaisNumeros);
 
 function enviarParaWhatsApp() {
-    const precoPorNumero = 0.98; // Valor por número (pode ser alterado)
+    const precoPorNumero = 0.49; // Valor por número (pode ser alterado)
     const selectedNumbers = [];
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked:not(:disabled)');
     const totalPagarElement = document.getElementById('total-a-pagar');
